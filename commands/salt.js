@@ -24,7 +24,7 @@ module.exports = {
             } 
 
             if (sender_balance.value < STARTING_BALANCE) {
-                balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {value: 2000}).exec();
+                balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {value: STARTING_BALANCE}).exec();
                 return message.reply(":salt:");
             }
 
