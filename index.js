@@ -49,7 +49,6 @@
  
  client.on("messageCreate", async (message) => {
   
-    console.log(message.content);
    if (message.author.bot) return;
    if (!message.guild) return;
  

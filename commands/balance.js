@@ -1,6 +1,7 @@
 const i18n = require("../util/i18n");
 const walletlistModel = require('../schemas/walletlist');
 const balancelistModel = require("../schemas/balancelist");
+const {STARTING_BALANCE} = require("../util/Util");
 
 module.exports = {
   name: "balance",
@@ -16,7 +17,7 @@ module.exports = {
 
                 const newBalance = new balancelistModel({
                     public_key: existing.public_key,
-                    value: 0
+                    value: STARTING_BALANCE
                 })
                 newBalance.save();
 

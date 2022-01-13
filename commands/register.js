@@ -1,6 +1,7 @@
 const i18n = require("../util/i18n");
 const walletlistModel = require('../schemas/walletlist');
 const { ec, keypairToHex} = require('../util/crypto');
+const {STARTING_BALANCE} = require("../util/Util");
 const balancelistModel = require("../schemas/balancelist");
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
 
             const newBalance = new balancelistModel({
                 public_key: publicKey,
-                value: 10
+                value: STARTING_BALANCE
             })
             newBalance.save();
             message.reply(`Welcome to Ramcoin <@${message.author.id}>! Please see your direct message for your public/private key!`);
