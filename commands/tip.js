@@ -14,6 +14,8 @@ module.exports = {
                 const prefixRegex = new RegExp(`<@(.*)>`);
                 const numberRegex = new RegExp('(.*)')
 
+                let tipamount = 1000;
+
                 const sender = await walletlistModel.findOne({user_uuid: message.author.id});
                 if (!sender) return message.reply(`<@${message.author.id}> does not have a wallet!`);
 
@@ -23,8 +25,8 @@ module.exports = {
                     return message.reply("You do not have enough RamCoin!");
                 } 
 
-                if (sender_balance.value < 1) {
-                    return message.reply("You do not have enough RamCoin!");
+                if (sender_balance.value < tipamount) {
+                    tipamount = sender_balance.value;
                 }
 
                 for(let user of args){
@@ -77,10 +79,10 @@ module.exports = {
 
 
     
-                    balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : -1}}).exec();
-                    balancelistModel.findOneAndUpdate({public_key: recipient.public_key}, {$inc : {'value' : 1}}).exec();
+                    balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : -tipamount}}).exec();
+                    balancelistModel.findOneAndUpdate({public_key: recipient.public_key}, {$inc : {'value' : tipamount}}).exec();
     
-                    message.reply(`<@${message.author.id}> has sent <@${recipient_uuid}> 1 RamCoin!`)
+                    message.reply(`<@${message.author.id}> has sent <@${recipient_uuid}> ${tipamount}R`)
 
                 }
                 return;
