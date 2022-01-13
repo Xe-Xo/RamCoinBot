@@ -95,22 +95,3 @@
      message.reply(i18n.__("common.errorCommand")).catch(console.error);
    }
  });
-
- client.on("voiceStateUpdate", async({oldState, newState}) => {
-
-  try {
-    
-    if (oldState.member.id !== newState.member.id) {
-      return;
-    }
-  
-    if (newState.streaming && !oldState.streaming) {
-      const streamer = await walletlistModel.findOne({user_uuid: newState.member.id});
-      if (!streamer) {return;}
-      balancelistModel.findOneAndUpdate({public_key: streamer.public_key}, {$inc : {'value' : 1000}}).exec();
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
- });
