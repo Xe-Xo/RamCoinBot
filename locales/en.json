@@ -1,0 +1,33 @@
+{
+	"balance": {
+		"description": "Display the User's balance",
+		"embedTitle": "{botname} Balance",
+		"embedDescription": "Show the user balance",
+		"balanceMessage": "The current balance of your wallet - {balance}.00R",
+		"nowalletMessage": "You do not have a wallet. please /ramcoin register one.",
+		"nobalanceMessage": "Your wallet does not have a balance"
+	},
+	"help": {
+		"description": "Display all commands and descriptions",
+		"embedTitle": "{botname} Help",
+		"embedDescription": "List of all commands"
+	},
+	"register": {
+		"description": "Register User with a RamCoin Wallet",
+		"embedTitle": "{botname} Register",
+		"embedDescription": "Register User with a RamCoin Wallet"
+	},
+	"tip": {
+		"description": "Tip A User 1x RamCoin",
+		"embedTitle": "{botname} Tip",
+		"embedDescription": "Tip a User with Ramcoin"
+	},
+	"common": {
+		"errorCommand": "Something effed up!"
+	},
+	"members": {
+		"description": "Show all users who have registered with Ramcoin",
+		"embedTitle": "{botname} members",
+		"embedDescription": "Show all users who have registered with Ramcoin"
+	}
+}

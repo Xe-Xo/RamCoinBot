@@ -1,0 +1,20 @@
+{
+  "name": "ramcoinbot",
+  "version": "1.0.0",
+  "description": "a discord bot for trading ramcoin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bip39": "^3.0.4",
+    "bn.js": "^4.12.0",
+    "crypto": "^1.0.1",
+    "discord.js": "^13.5.1",
+    "elliptic": "^6.5.4",
+    "i18n": "^0.13.4",
+    "mongoose": "^6.1.6"
+  }
+}
