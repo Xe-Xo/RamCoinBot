@@ -24,12 +24,8 @@ module.exports = {
             } 
 
             if (sender_balance.value < STARTING_BALANCE) {
-                const newBalance = new balancelistModel({
-                    public_key: sender.public_key,
-                    value: STARTING_BALANCE
-                })
-                newBalance.save();
-                return;
+                balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {value: 2000}).exec();
+                return message.reply(":salt:");
             }
 
             return message.reply("Why are you Salty?");
