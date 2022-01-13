@@ -14,6 +14,19 @@ module.exports = {
                 const prefixRegex = new RegExp(`<@(.*)>`);
                 const numberRegex = new RegExp('(.*)')
 
+                const sender = await walletlistModel.findOne({user_uuid: message.author.id});
+                if (!sender) return message.reply(`<@${message.author.id}> does not have a wallet!`);
+
+                const sender_balance = await balancelistModel.findOne({public_key: sender.public_key});;
+
+                if (!sender_balance) {
+                    return message.reply("You do not have enough RamCoin!");
+                } 
+
+                if (sender_balance.value < 1) {
+                    return message.reply("You do not have enough RamCoin!");
+                }
+
                 for(let user of args){
                     
                     let recipient_uuid;
@@ -58,20 +71,11 @@ module.exports = {
                     }
 
                     const recipient = await walletlistModel.findOne({user_uuid: recipient_uuid});
-                    const sender = await walletlistModel.findOne({user_uuid: message.author.id});
+
     
                     if (!recipient) return message.reply(`<@${recipient_uuid}> does not have a wallet!`);
-                    if (!sender) return message.reply(`<@${message.author.id}> does not have a wallet!`);
-    
-                    const sender_balance = await balancelistModel.findOne({public_key: sender.public_key});;
-    
-                    if (!sender_balance) {
-                        return message.reply("You do not have enough RamCoin!");
-                    } 
-    
-                    if (sender_balance.value < 1) {
-                        return message.reply("You do not have enough RamCoin!");
-                    }
+
+
     
                     balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : -1}}).exec();
                     balancelistModel.findOneAndUpdate({public_key: recipient.public_key}, {$inc : {'value' : 1}}).exec();

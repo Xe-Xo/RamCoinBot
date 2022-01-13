@@ -29,5 +29,15 @@
 		"description": "Show all users who have registered with Ramcoin",
 		"embedTitle": "{botname} members",
 		"embedDescription": "Show all users who have registered with Ramcoin"
+	},
+	"deathroll": {
+		"description": "Deathrolls between two Users for an amount of Ramcoin",
+		"embedTitle": "{botname} deathroll",
+		"embedDescription": "Deathrolls between two Users for an amount of Ramcoin"
+	},
+	"salt": {
+		"description": "The User is Salty",
+		"embedTitle": "{botname} salt",
+		"embedDescription": "The User is Salty"
 	}
 }
