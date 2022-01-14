@@ -37,7 +37,7 @@ module.exports = {
             let output_message = message.reply(output_message_text);
             let winner = false;
 
-            while(!winner){
+            while(winner == false){
                 let sender_roll = randomInt(1,101);
                 let house_roll = randomInt(1,101);
                 output_message_text += output_message_text += `\n <@${message.author.id}> rolling between 1 - 100: ${sender_roll}`;
