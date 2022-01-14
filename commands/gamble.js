@@ -40,8 +40,8 @@ module.exports = {
             while(!winner){
                 let sender_roll = randomInt(1,101);
                 let house_roll = randomInt(1,101);
-                output_message_text += output_message_text += `\n <@${message.author.id}> rolling between 1 - 100: ${sender_roll}`;
-                output_message_text += output_message_text += `\n The House rolling between 1 - 100: ${house_roll}`;
+                output_message_text += `\n <@${message.author.id}> rolling between 1 - 100: ${sender_roll}`;
+                output_message_text += `\n The House rolling between 1 - 100: ${house_roll}`;
                 
                 if (sender_roll > house_roll) {
                     winner = true;
