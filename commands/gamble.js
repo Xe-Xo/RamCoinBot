@@ -35,23 +35,21 @@ module.exports = {
 
             let output_message_text = `Gamble of ${wager} from <@${message.author.id}> Accepted!`
             let output_message = await message.reply(output_message_text);
-            let winner = false;
 
-            while(!winner){
-                let sender_roll = randomInt(1,101);
+            while(true){
                 let house_roll = randomInt(1,101);
+                let sender_roll = randomInt(1,101);
+                
                 output_message_text += `\n <@${message.author.id}> rolling between 1 - 100: ${sender_roll}`;
                 output_message_text += `\n The House rolling between 1 - 100: ${house_roll}`;
                 
                 if (sender_roll > house_roll) {
-                    winner = true;
-                    output_message_text += `\n <@${current_roller}> Wins!`
+                    output_message_text += `\n <@${message.author.id}> Wins!`
                     balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager*2}}).exec();
                     break;
                 }
 
                 if (sender_roll < house_roll) {
-                    winner = true;
                     output_message_text += `\n The House Wins!`
                     break;
                 }
