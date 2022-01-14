@@ -46,7 +46,7 @@ module.exports = {
                 if (sender_roll > house_roll) {
                     winner = true;
                     output_message_text += `\n <@${current_roller}> Wins!`
-                    balancelistModel.findOneAndUpdate({public_key: winner.public_key}, {$inc : {'value' : wager*2}}).exec();
+                    balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager*2}}).exec();
                     break;
                 }
 
