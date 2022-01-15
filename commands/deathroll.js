@@ -52,17 +52,22 @@ module.exports = {
             balancelistModel.findOneAndUpdate({public_key: accepter.public_key}, {$inc : {'value' : -wager}}).exec();
             balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : -wager}}).exec();
             
-            let output_message_text = `DEATHROLL ACCEPTED! STARTING DEATHROLL FOR ${args[0]}R`
+
+            let lastroll = parseInt(args[0]);
+            let max = parseInt(args[0])
+
+            let output_message_text = `:skull: DEATHROLL ACCEPTED! :skull: \n STARTING DEATHROLL FOR ${max}R`
             let output_message = await repliedTo.reply(output_message_text);
             
-            let lastroll = parseInt(args[0]);
             let rollerA = message.author.id;
             let rollerB = repliedTo.author.id;
             let current_roller = rollerA;
 
             while (lastroll > 1) {
 
-                delay = Math.min(Math.max(lastroll, 200), 3000);
+
+                delay = Math.round(((max - lastroll)/max)*3000);
+                delay = Math.min(Math.max(delay, 500), 3000);
 
                 await new Promise(r => setTimeout(r, delay));
                 let roll = randomInt(1, lastroll+1)
