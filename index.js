@@ -97,7 +97,7 @@
  });
 
 
-const balancelistModel = require("../schemas/balancelist");
+const balancelistModel = require("./schemas/balancelist");
 
 let myVar = setInterval(function(){ timer() }, 60000);
 
