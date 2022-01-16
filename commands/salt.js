@@ -5,7 +5,7 @@ const balancelistModel = require("../schemas/balancelist");
 
 module.exports = {
     name: "salt",
-    cooldown: 600,
+    cooldown: 60, //1 minute between salts
     description: i18n.__("salt.description"),
     async execute(message) {
         try {
