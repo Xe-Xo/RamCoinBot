@@ -11,7 +11,7 @@ module.exports = {
             
             const balances = await balancelistModel.find({});
 
-            balances.forEach(function(balancedoc) {
+            balances.forEach(async function(balancedoc) {
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: STARTING_BALANCE}).exec();
             });
 
