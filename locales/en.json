@@ -41,9 +41,9 @@
 		"embedTitle": "{botname} gamble [amount]",
 		"embedDescription": "Gamble an amount of Ramcoin"
 	},
-	"tableflip": {
+	"fliptable": {
 		"description": "(╯°□°）╯︵ ┻━┻",
-		"embedTitle": "{botname} tableflip",
+		"embedTitle": "{botname} fliptable",
 		"embedDescription": "(╯°□°）╯︵ ┻━┻"
 	}
 }
