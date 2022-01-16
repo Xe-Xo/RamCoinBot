@@ -23,7 +23,8 @@
 		"embedDescription": "Tip a User with Ramcoin"
 	},
 	"common": {
-		"errorCommand": "Something effed up!"
+		"errorCommand": "Something effed up!",
+		"cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command."
 	},
 	"members": {
 		"description": "Show all users who have registered with Ramcoin",
