@@ -10,18 +10,16 @@ module.exports = {
     
     try {
 
-        let memberstring = ""
+        let memberstring = ":crown: MEMBERS :crown:"
 
-        const wallets = await walletlistModel.find({})
+        const balances = await balancelistModel.find({}).sort({value: -1}).exec();
 
-        for(let wallet of wallets){
-            const balance = await balancelistModel.findOne({public_key: wallet.public_key});
-            if (balance) {
-                memberstring += `\n<@${wallet.user_uuid}> - ${balance.value}R`
-            } else {
-                memberstring += `\n<@${wallet.user_uuid}> - 0R`
-            }
-        }
+        for(let balance of balances){
+        
+            const wallet = await walletlistModel.findOne({public_key: balance.public_key});
+            memberstring += `\n<@${wallet.user_uuid}> - ${balance.value}R`
+
+        };
 
         return message.reply(memberstring);
     

@@ -6,11 +6,12 @@ const { randomInt } = require("crypto");
 
 module.exports = {
     name: "deathroll",
+    cooldown: 60,
     description: i18n.__("deathroll.description"),
     async execute(message, args) {
         try {
             
-            const numberRegex = new RegExp('[1-9][0-9]*')
+            const numberRegex = new RegExp('^[0-9]*$')
 
             if (!numberRegex.test(args[0])) {
                 return message.reply("Please enter the amount you wish to deathroll. eg. /ramcoin deathroll 10")

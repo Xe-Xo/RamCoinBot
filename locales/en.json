@@ -45,5 +45,10 @@
 		"description": "(╯°□°）╯︵ ┻━┻",
 		"embedTitle": "{botname} fliptable",
 		"embedDescription": "(╯°□°）╯︵ ┻━┻"
+	},
+	"jackpot": {
+		"description": "Join a Jackpot. Winner takes all",
+		"embedTitle": "{botname} jackpot [amount]",
+		"embedDescription": "Join a Jackpot. Winner takes all"
 	}
 }

@@ -10,7 +10,7 @@ module.exports = {
     async execute(message, args) {
         try {
             
-            const numberRegex = new RegExp('[1-9][0-9]*')
+            const numberRegex = new RegExp('^[0-9]*$')
 
             if (!numberRegex.test(args[0])) {
                 return message.reply("Please enter the amount you wish to gamble. eg. /ramcoin gamble [amount]")

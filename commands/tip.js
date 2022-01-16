@@ -12,7 +12,7 @@ module.exports = {
             if (args) {
 
                 const prefixRegex = new RegExp(`<@(.*)>`);
-                const numberRegex = new RegExp('(.*)')
+                const numberRegex = new RegExp('^[0-9]*$')
 
                 let user = args[0]
                 let tipamount = args[1]
