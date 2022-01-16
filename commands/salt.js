@@ -25,10 +25,10 @@ module.exports = {
 
             greater_than_balances.forEach( async function(balancedoc) {
 
-                let new_balance = balancedoc.value - Math.round(amount_to_add / ((balancedoc.value - STARTING_BALANCE)/amount_above));
-                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${amount_to_add} / ((${balancedoc.value} - ${STARTING_BALANCE})/${amount_above}))`);
+                let new_balance = balancedoc.value - Math.round(amount_to_add * ((balancedoc.value - STARTING_BALANCE)/amount_above));
+                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${amount_to_add} * ((${balancedoc.value} - ${STARTING_BALANCE})/${amount_above}))`);
 
-                //await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: new_balance}).exec();
+                await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: new_balance}).exec();
             });
 
             less_than_balances.forEach( async function(balancedoc) {
