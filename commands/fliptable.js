@@ -9,6 +9,10 @@ module.exports = {
     async execute(message) {
         try {
             
+
+            const greater_than_balances = await balancelistModel.find({value: {$gt: (STARTING_BALANCE * 100)}});
+            if(greater_than_balances.length === 0) return message.reply("Nope!");
+
             const balances = await balancelistModel.find({});
 
             balances.forEach(async function(balancedoc) {
