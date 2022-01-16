@@ -13,7 +13,11 @@ module.exports = {
             const numberRegex = new RegExp('[1-9][0-9]*')
 
             if (!numberRegex.test(args[0])) {
-                return message.reply("Please enter the amount you wish to deathroll. eg. /ramcoin deathroll 10")
+                return message.reply("Please enter the amount you wish to gamble. eg. /ramcoin gamble [amount]")
+            }
+
+            if (!args[0]) {
+                return message.reply("Please enter the amount you wish to gamble. eg. /ramcoin gamble [amount]")
             }
 
             let wager = parseInt(args[0]);
@@ -37,6 +41,7 @@ module.exports = {
             let output_message = await message.reply(output_message_text);
 
             while(true){
+                await new Promise(r => setTimeout(r, 3000));
                 let house_roll = randomInt(1,101);
                 let sender_roll = randomInt(1,101);
                 
