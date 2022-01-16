@@ -17,6 +17,10 @@ module.exports = {
                 let user = args[0]
                 let tipamount = args[1]
 
+                if(!args[1]){
+                    tipamount = 1000;
+                 }
+
                 if(!numberRegex.test(tipamount)){
                     tipamount = 1000;
                 }
