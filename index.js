@@ -101,7 +101,7 @@ const balancelistModel = require("./schemas/balancelist");
 
 let myVar = setInterval(function(){ timer() }, 60000);
 
-function timer() {
+async function timer() {
   const balances = await balancelistModel.find({});
   balances.forEach(async function(balancedoc) {
     await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {$inc : {'value' : BALANCE_INCREASE}}).exec();
