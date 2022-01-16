@@ -4,7 +4,7 @@ const balancelistModel = require("../schemas/balancelist");
 
 module.exports = {
     name: "fliptable",
-    cooldown: 180, //180 minutes between flips
+    cooldown: 10800, //180 minutes between flips
     description: i18n.__("fliptable.description"),
     async execute(message) {
         try {

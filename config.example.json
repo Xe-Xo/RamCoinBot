@@ -3,5 +3,6 @@
     "MONGODB_URI": "",
     "PREFIX": "/ramcoin ",
     "LOCALE": "en",
-    "STARTING_BALANCE": 10
+    "STARTING_BALANCE": 10,
+    "BALANCE_INCREASE": 5
   }

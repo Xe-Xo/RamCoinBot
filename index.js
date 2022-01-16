@@ -5,7 +5,7 @@
  const { Client, Collection, Intents } = require("discord.js");
  const { readdirSync } = require("fs");
  const { join } = require("path");
- const { TOKEN, PREFIX, MONGODB_URI } = require("./util/Util");
+ const { TOKEN, PREFIX, MONGODB_URI, BALANCE_INCREASE } = require("./util/Util");
  const i18n = require("./util/i18n");
  const mongoDB = require('mongoose');
  
@@ -104,7 +104,7 @@ let myVar = setInterval(function(){ timer() }, 60000);
 function timer() {
   const balances = await balancelistModel.find({});
   balances.forEach(async function(balancedoc) {
-    await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {$inc : {'value' : 50}}).exec();
+    await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {$inc : {'value' : BALANCE_INCREASE}}).exec();
   });
 }
 
