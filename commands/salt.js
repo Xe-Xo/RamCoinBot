@@ -4,7 +4,6 @@ const balancelistModel = require("../schemas/balancelist");
 
 module.exports = {
     name: "salt",
-    cooldown: 60, //1 minute between salts
     description: i18n.__("salt.description"),
     async execute(message) {
         try {
@@ -19,14 +18,14 @@ module.exports = {
 
             console.log(amount_to_add);
             
-            const greater_than_balances = await balancelistModel.find({value: {$gt: 100000}});
-            greater_than_balances.forEach(function(balancedoc) {amount_above += (balancedoc.value - 100000)});
+            const greater_than_balances = await balancelistModel.find({value: {$gt: (STARTING_BALANCE * 100)}});
+            greater_than_balances.forEach(function(balancedoc) {amount_above += (balancedoc.value - (STARTING_BALANCE * 100))});
             console.log(amount_above);
 
             greater_than_balances.forEach( async function(balancedoc) {
 
-                let new_balance = balancedoc.value - Math.round(Math.min(amount_to_add,amount_above) * ((balancedoc.value - 100000)/amount_above));
-                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${Math.min(amount_to_add,amount_above)} * ((${balancedoc.value} - ${100000})/${amount_above}))`);
+                let new_balance = balancedoc.value - Math.round(Math.min(amount_to_add,amount_above) * ((balancedoc.value - (STARTING_BALANCE * 100))/amount_above));
+                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${Math.min(amount_to_add,amount_above)} * ((${balancedoc.value} - ${(STARTING_BALANCE * 100)})/${amount_above}))`);
 
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: new_balance}).exec();
             });

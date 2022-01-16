@@ -39,6 +39,8 @@ module.exports = {
             const accepter = await walletlistModel.findOne({user_uuid: repliedTo.author.id});
             if (!accepter) return repliedTo.reply(`<@${message.author.id}> does not have a wallet!`);
 
+            if (accepter.public_key === sender.public_key) return repliedTo.reply("You can not accept your own deathrolls!");
+
             const accepter_balance = await balancelistModel.findOne({public_key: accepter.public_key});;
 
             if (!accepter_balance) {
@@ -85,13 +87,11 @@ module.exports = {
                 lastroll = roll;
 
                 
-                
             }
 
             output_message_text += `\n <@${current_roller}> Wins!`
 
             const winner = await walletlistModel.findOne({user_uuid: current_roller});
-            const winner_balance = await balancelistModel.findOne({public_key: winner.public_key});;
             balancelistModel.findOneAndUpdate({public_key: winner.public_key}, {$inc : {'value' : wager*2}}).exec();
 
             return output_message.edit(output_message_text);
