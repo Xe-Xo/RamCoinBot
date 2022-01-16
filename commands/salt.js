@@ -18,12 +18,12 @@ module.exports = {
 
             const greater_than_balances = await balancelistModel.find({value: {$gt: STARTING_BALANCE}});
             greater_than_balances.forEach(function(balancedoc) {total_amount_above += balancedoc.value});
-            greater_than_balances.forEach(function(balancedoc) {
+            greater_than_balances.forEach( async function(balancedoc) {
                 let amount_to_remove = Math.round(amount_to_add / (balancedoc.value/total_amount_above));
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: {$inc: -amount_to_remove}}).exec();
             });
 
-            less_than_balances.forEach(function(balancedoc) {
+            less_than_balances.forEach( async function(balancedoc) {
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: STARTING_BALANCE}).exec();
             });
 
