@@ -10,12 +10,15 @@ module.exports = {
         try {
             
 
-            //let amount_to_add = 0;
+            let amount_to_add = 0;
             //let total_amount_above = 0;
 
             const less_than_balances = await balancelistModel.find({value: {$lt: STARTING_BALANCE}});
+
             less_than_balances.forEach(function(balancedoc) {amount_to_add += (STARTING_BALANCE - balancedoc.value)});
 
+            console.log(amount_to_add);
+            
             //const greater_than_balances = await balancelistModel.find({value: {$gt: STARTING_BALANCE}});
             //greater_than_balances.forEach(function(balancedoc) {total_amount_above += balancedoc.value});
             //greater_than_balances.forEach( async function(balancedoc) {
@@ -25,7 +28,6 @@ module.exports = {
             //});
 
             less_than_balances.forEach( async function(balancedoc) {
-                console.log(balancedoc)
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: STARTING_BALANCE}).exec();
             });
 
