@@ -19,14 +19,14 @@ module.exports = {
 
             console.log(amount_to_add);
             
-            const greater_than_balances = await balancelistModel.find({value: {$gt: STARTING_BALANCE}});
-            greater_than_balances.forEach(function(balancedoc) {amount_above += (balancedoc.value - STARTING_BALANCE)});
+            const greater_than_balances = await balancelistModel.find({value: {$gt: 100000}});
+            greater_than_balances.forEach(function(balancedoc) {amount_above += (balancedoc.value - 100000)});
             console.log(amount_above);
 
             greater_than_balances.forEach( async function(balancedoc) {
 
-                let new_balance = balancedoc.value - Math.round(Math.min(amount_to_add,amount_above) * ((balancedoc.value - STARTING_BALANCE)/amount_above));
-                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${Math.min(amount_to_add,amount_above)} * ((${balancedoc.value} - ${STARTING_BALANCE})/${amount_above}))`);
+                let new_balance = balancedoc.value - Math.round(Math.min(amount_to_add,amount_above) * ((balancedoc.value - 100000)/amount_above));
+                console.log(`Balance was ${balancedoc.value} ==> New Balance ${new_balance} --- ${balancedoc.value} - Math.round(${Math.min(amount_to_add,amount_above)} * ((${balancedoc.value} - ${100000})/${amount_above}))`);
 
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: new_balance}).exec();
             });
@@ -35,7 +35,7 @@ module.exports = {
                 await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {value: STARTING_BALANCE}).exec();
             });
 
-            return message.reply(":salt:");
+            return message.reply(":salt::salt::salt:");
 
 
         } catch (error) {
