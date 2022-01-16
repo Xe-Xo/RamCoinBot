@@ -1,25 +1,25 @@
 {
 	"balance": {
 		"description": "Display the User's balance",
-		"embedTitle": "{botname} Balance",
+		"embedTitle": "{botname} balance",
 		"embedDescription": "Show the user balance",
-		"balanceMessage": "The current balance of your wallet - {balance}.00R",
+		"balanceMessage": "The current balance of your wallet - {balance}R",
 		"nowalletMessage": "You do not have a wallet. please /ramcoin register one.",
 		"nobalanceMessage": "Your wallet does not have a balance"
 	},
 	"help": {
 		"description": "Display all commands and descriptions",
-		"embedTitle": "{botname} Help",
+		"embedTitle": "{botname} help",
 		"embedDescription": "List of all commands"
 	},
 	"register": {
 		"description": "Register User with a RamCoin Wallet",
-		"embedTitle": "{botname} Register",
+		"embedTitle": "{botname} register",
 		"embedDescription": "Register User with a RamCoin Wallet"
 	},
 	"tip": {
-		"description": "Tip A User 1x RamCoin",
-		"embedTitle": "{botname} Tip",
+		"description": "Tip A User an RamCoin",
+		"embedTitle": "{botname} tip [user] [amount]",
 		"embedDescription": "Tip a User with Ramcoin"
 	},
 	"common": {
@@ -33,12 +33,22 @@
 	},
 	"deathroll": {
 		"description": "Deathrolls between two Users for an amount of Ramcoin",
-		"embedTitle": "{botname} deathroll",
+		"embedTitle": "{botname} deathroll [amount]",
 		"embedDescription": "Deathrolls between two Users for an amount of Ramcoin"
+	},
+	"gamble": {
+		"description": "Gamble an amount of Ramcoin",
+		"embedTitle": "{botname} gamble [amount]",
+		"embedDescription": "Gamble an amount of Ramcoin"
 	},
 	"salt": {
 		"description": "The User is Salty",
 		"embedTitle": "{botname} salt",
 		"embedDescription": "The User is Salty"
+	},
+	"tableflip": {
+		"description": "(╯°□°）╯︵ ┻━┻",
+		"embedTitle": "{botname} tableflip",
+		"embedDescription": "(╯°□°）╯︵ ┻━┻"
 	}
 }
