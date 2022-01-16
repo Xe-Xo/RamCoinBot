@@ -41,11 +41,6 @@
 		"embedTitle": "{botname} gamble [amount]",
 		"embedDescription": "Gamble an amount of Ramcoin"
 	},
-	"salt": {
-		"description": "The User is Salty",
-		"embedTitle": "{botname} salt",
-		"embedDescription": "The User is Salty"
-	},
 	"tableflip": {
 		"description": "(╯°□°）╯︵ ┻━┻",
 		"embedTitle": "{botname} tableflip",
