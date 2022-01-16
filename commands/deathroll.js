@@ -62,6 +62,7 @@ module.exports = {
             let rollerA = message.author.id;
             let rollerB = repliedTo.author.id;
             let current_roller = rollerA;
+            let delay;
 
             while (lastroll > 1) {
 
