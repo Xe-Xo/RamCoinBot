@@ -95,3 +95,19 @@
      message.reply(i18n.__("common.errorCommand")).catch(console.error);
    }
  });
+
+
+const balancelistModel = require("../schemas/balancelist");
+
+let myVar = setInterval(function(){ timer() }, 60000);
+
+function timer() {
+  const balances = await balancelistModel.find({});
+  balances.forEach(async function(balancedoc) {
+    await balancelistModel.findOneAndUpdate({public_key: balancedoc.public_key}, {$inc : {'value' : 50}}).exec();
+  });
+}
+
+function stopFunction() {
+  clearInterval(myVar);
+}

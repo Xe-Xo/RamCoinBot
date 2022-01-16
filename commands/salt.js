@@ -1,5 +1,4 @@
 const i18n = require("../util/i18n");
-const walletlistModel = require('../schemas/walletlist');
 const {STARTING_BALANCE} = require("../util/Util");
 const balancelistModel = require("../schemas/balancelist");
 
