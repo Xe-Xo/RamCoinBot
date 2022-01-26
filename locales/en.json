@@ -50,5 +50,14 @@
 		"description": "Join a Jackpot. Winner takes all",
 		"embedTitle": "{botname} jackpot [amount]",
 		"embedDescription": "Join a Jackpot. Winner takes all"
+	},
+	"auth": {
+		"description": "auth.description"
+	},
+	"secrets": {
+		"description": "secrets.description"
+	},
+	"reaction": {
+		"description": "reaction.description"
 	}
 }

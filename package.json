@@ -4,7 +4,8 @@
   "description": "a discord bot for trading ramcoin",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "debug": "node debug.js"
   },
   "author": "",
   "license": "ISC",
