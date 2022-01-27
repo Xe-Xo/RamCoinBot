@@ -118,7 +118,17 @@ module.exports = {
                         blackjack_body1 += `\n Player card value: ${totalValues(player_cards)}`
                         blackjack_body1 += `\n Dealer card value: ${totalValues(dealer_cards)}`
 
-                        if (totalValues(dealer_cards) >= totalValues(player_cards) && totalValues(dealer_cards) < 22) {
+                        if(totalValues(player_cards) == totalValues(dealer_cards) && totalValues(player_cards) < 22 && totalValues(dealer_cards) < 22){
+
+                            blackjack_body2 = `\n Tie!`
+
+                            // NO WINNINGS
+                            await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
+                            balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager*2}}).exec();
+                            gamblecomplete = true;
+                            collector.stop()
+
+                        } else if (totalValues(dealer_cards) >= totalValues(player_cards) && totalValues(dealer_cards) < 22) {
                             blackjack_body2 = `\n Dealer Wins`
 
                             // NO WINNINGS
@@ -126,7 +136,7 @@ module.exports = {
                             gamblecomplete = true;
                             collector.stop()
  
-                        } else {
+                        } else  {
                             blackjack_body2 = `\n Player Wins`
                             balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager*2}}).exec();
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
@@ -148,6 +158,7 @@ module.exports = {
                 blackjackmessage.reactions.removeAll().catch(error => console.error('Failed to clear reactions:', error));
 
                 if (gamblecomplete === false) {
+                    console.log("It appears thats something went wrong so here is your gamble back")
                     balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager}}).exec();
                 }
             })
