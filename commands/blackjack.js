@@ -124,7 +124,7 @@ module.exports = {
 
                             // NO WINNINGS
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
-                            balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager*2}}).exec();
+                            balancelistModel.findOneAndUpdate({public_key: sender.public_key}, {$inc : {'value' : wager}}).exec();
                             gamblecomplete = true;
                             collector.stop()
 
