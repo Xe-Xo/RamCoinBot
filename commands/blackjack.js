@@ -108,7 +108,7 @@ module.exports = {
 
                         await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
 
-                        while (totalValues(dealer_cards) < Math.min(21,totalValues(player_cards))) {
+                        while (totalValues(dealer_cards) < 17) {
                             dealer_cards.push(cardShuffle.shift());
                             blackjack_body1 += `\n Dealer deals himself ${dealer_cards[dealer_cards.length-1].text}.`
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
