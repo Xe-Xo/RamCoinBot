@@ -20,7 +20,7 @@ module.exports = {
         response_string += `\nHouse Total Winnings - ${blackjack_stats.house_amount_wins}`
 
         if (total_games > 0) {
-            let win_percentage = Math.round((blackjack_stats.player_amount_wins/total_games) * 100)
+            let win_percentage = Math.round((blackjack_stats.player_number_wins/total_games) * 100)
             response_string += `\nWin Percentage - ${win_percentage}%`
         }
        
