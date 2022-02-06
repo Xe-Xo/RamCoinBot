@@ -1,5 +1,5 @@
 const gamestatsModel = require('../schemas/gamestats');
-
+const i18n = require("../util/i18n");
 
 module.exports = {
     name: "stats",
