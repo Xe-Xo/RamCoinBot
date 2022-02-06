@@ -1,6 +1,7 @@
 const i18n = require("../util/i18n");
 const walletlistModel = require('../schemas/walletlist');
 const balancelistModel = require("../schemas/balancelist");
+const gamestatsModel = require("../schemas/gamestats");
 const { randomInt } = require("crypto");
 const { shuffleCards, totalValues } = require("../util/blackjack");
 
@@ -108,7 +109,7 @@ module.exports = {
 
                         await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
 
-                        while (totalValues(dealer_cards) < 17) {
+                        while (totalValues(dealer_cards) < 16) {
                             dealer_cards.push(cardShuffle.shift());
                             blackjack_body1 += `\n Dealer deals himself ${dealer_cards[dealer_cards.length-1].text}.`
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
@@ -135,6 +136,8 @@ module.exports = {
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
                             gamblecomplete = true;
                             collector.stop()
+
+                            gamestatsModel.findOneAndUpdate({game_name: 'blackjack'}, {$inc: {'house_number_wins': 1, 'house_amount_wins': wager}}).exec()
  
                         } else  {
                             blackjack_body2 = `\n Player Wins`
@@ -142,6 +145,9 @@ module.exports = {
                             await blackjackmessage.edit(blackjack_header + blackjack_body1 + blackjack_body2);
                             gamblecomplete = true;
                             collector.stop()
+
+                            gamestatsModel.findOneAndUpdate({game_name: 'blackjack'}, {$inc: {'player_number_wins': 1, 'player_amount_wins': wager}}).exec()
+
                         }
 
                         break
