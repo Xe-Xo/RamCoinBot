@@ -14,9 +14,9 @@ module.exports = {
 
         let total_games = blackjack_stats.player_number_wins + blackjack_stats.house_number_wins
         
-        response_string += `\nPlayer Games Won - ${blackjack_stats.player_number_wins}`
+        response_string += `\nPlayers Games Won - ${blackjack_stats.player_number_wins}`
         response_string += `\nHouse Games Won - ${blackjack_stats.house_number_wins}`
-        response_string += `\nPlayer Total Winnings - ${blackjack_stats.player_amount_wins}`
+        response_string += `\nPlayers Total Winnings - ${blackjack_stats.player_amount_wins}`
         response_string += `\nHouse Total Winnings - ${blackjack_stats.house_amount_wins}`
 
         if (total_games > 0) {

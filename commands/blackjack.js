@@ -89,6 +89,8 @@ module.exports = {
                             gamblecomplete = true;
                             collector.stop();
 
+                            gamestatsModel.findOneAndUpdate({game_name: 'blackjack'}, {$inc: {'house_number_wins': 1, 'house_amount_wins': wager}}).exec()
+
                             // NO WINNINGS
 
                             break
