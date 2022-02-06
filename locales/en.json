@@ -59,5 +59,8 @@
 	},
 	"reaction": {
 		"description": "reaction.description"
+	},
+	"stats": {
+		"description": "stats.description"
 	}
 }
